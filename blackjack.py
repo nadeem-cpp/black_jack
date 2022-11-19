@@ -29,7 +29,7 @@ def random_cards():
     return rd.choice(cards)
     
 # return score according to cards
-def scoring(cards , user):
+def scoring(cards):
     """ get cards and return the total score 
     give 2nd parameter True for user and false for dealer"""
     score = 0
@@ -57,7 +57,7 @@ def scoring(cards , user):
 # simple game ai 
 def dealer_AI(dealer , user):
 
-    dealer += scoring(random_cards() , False)
+    dealer += scoring(random_cards())
     # print("entering ai")
     if (dealer > BURST_SCORE):
         # user has won
@@ -99,11 +99,11 @@ def black_jack():
 
     # calculate actual and shown score for each
     # shown score is shown to opponent rather than actual score
-    user["actual_score"] = scoring(user["cards"] , True)
-    user["shown_score"] = scoring(user["cards"][0] , True)
+    user["actual_score"] = scoring(user["cards"])
+    user["shown_score"] = scoring(user["cards"][0])
     
-    dealer["actual_score"] = scoring(dealer["cards"] , False)
-    dealer["shown_score"] = scoring(dealer["cards"][0] , False)
+    dealer["actual_score"] = scoring(dealer["cards"])
+    dealer["shown_score"] = scoring(dealer["cards"][0])
     
 
     # display score of the cards
@@ -116,7 +116,7 @@ def black_jack():
     while terminate != TERMINATE:
         if choice == "1":
             user["cards"].append(random_cards())
-            user["actual_score"] += scoring(user["cards"][-1] , True)
+            user["actual_score"] += scoring(user["cards"][-1])
             display(user)
 
             # burst cards
